@@ -1,4 +1,3 @@
-/* Reset & base */
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +6,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #ffffff;
-  color: #1c1c1c;
+  background: #fff8f0;
+  color: #333;
   line-height: 1.5;
   display: flex;
   justify-content: center;
@@ -20,34 +19,41 @@ body {
   width: 100%;
 }
 
-/* Title */
 h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: center;
-  color: #111;
+  color: #5a3e36;
 }
 
-/* Controls section */
 .controls {
-  background: #fff;
+  background: #fffdf7;
   border-radius: 12px;
   padding: 1rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom: 2rem;
 }
 
 .file {
   display: inline-block;
   margin-bottom: 1rem;
   cursor: pointer;
-  color: #007aff;
   font-weight: 500;
 }
 
-.file input {
-  display: none;
+.file span {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #f4d8b5;
+  color: #5a3e36;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.file span:hover {
+  background: #e9c799;
 }
 
 .preproc {
@@ -56,6 +62,7 @@ h1 {
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 0.95rem;
+  color: #5a3e36;
 }
 
 .actions {
@@ -70,38 +77,42 @@ button {
   border: none;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-
-button:hover {
-  transform: translateY(-1px);
+  transition: all 0.2s ease;
 }
 
 #process-btn {
-  background: #007aff;
-  color: #fff;
+  background: #f4d8b5;
+  color: #5a3e36;
+}
+
+#process-btn:hover {
+  background: #e9c799;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 #clear-btn {
-  background: #f2f2f2;
-  color: #333;
+  background: #fff4e6;
+  color: #5a3e36;
+}
+
+#clear-btn:hover {
+  background: #f8e5d1;
 }
 
 .result-actions button {
-  background: #f9f9f9;
-  color: #111;
+  background: #fff4e6;
+  color: #5a3e36;
 }
 
 .result-actions button:hover {
-  background: #e9e9e9;
+  background: #f8e5d1;
 }
 
 .progress {
   font-size: 0.9rem;
-  color: #666;
+  color: #7a5c50;
 }
 
-/* Preview + result */
 .preview {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -109,53 +120,77 @@ button:hover {
 }
 
 .canvas-wrap {
-  background: #fff;
-  border-radius: 12px;
+  background: #fffdf7;
+  border-radius: 16px;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: auto;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.canvas-wrap:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transform: scale(1.01);
 }
 
 canvas {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #e0d8c8;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+canvas:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
 .result {
-  background: #fff;
-  border-radius: 12px;
+  background: #fffdf7;
+  border-radius: 16px;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
 }
 
 .result h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #5a3e36;
 }
 
 textarea {
   width: 100%;
   min-height: 300px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 0.8rem;
-  font-family: monospace;
+  border: 1px solid #e0d8c8;
+  border-radius: 12px;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
   font-size: 0.95rem;
   resize: vertical;
   margin-bottom: 0.8rem;
+  background: #fffaf0;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Footer */
 footer {
   text-align: center;
   font-size: 0.85rem;
-  color: #777;
+  color: #7a5c50;
   margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .preview {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-wrap, .result {
+    padding: 0.5rem;
+  }
 }
