@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Handwritten Notes → Text (Upload)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Handwritten Notes → Text</h1>
+
+    <section class="controls">
+      <label class="file">
+        <input id="file-input" type="file" accept="image/*" />
+        <span>Select or drop an image</span>
+      </label>
+
+      <div class="preproc">
+        <label><input id="grayscale" type="checkbox" checked/> Grayscale</label>
+        <label><input id="contrast" type="checkbox" checked/> Increase contrast</label>
+        <label><input id="binarize" type="checkbox" /> Binarize (threshold)</label>
+        <label>Upscale: <input id="scale" type="range" min="1" max="3" step="0.5" value="2"/></label>
+      </div>
+
+      <div class="actions">
+        <button id="process-btn">Process & OCR</button>
+        <button id="clear-btn">Clear</button>
+      </div>
+
+      <div class="progress" id="progress">Ready</div>
+    </section>
+
+    <section class="preview">
+      <div class="canvas-wrap">
+        <canvas id="preview-canvas"></canvas>
+      </div>
+      <div class="result">
+        <h2>Recognized text</h2>
+        <textarea id="output" placeholder="Recognized text will appear here..."></textarea>
+        <div class="result-actions">
+          <button id="copy-btn">Copy</button>
+          <button id="download-btn">Download .txt</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Engine: Tesseract.js (runs fully in your browser). 
+      <br/>⚠️ For best results with handwriting, use clear block letters or consider Google Vision / AWS Textract for messy notes.</p>
+    </footer>
+  </main>
+
+  <!-- Tesseract.js -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
